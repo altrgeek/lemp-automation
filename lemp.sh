@@ -26,9 +26,7 @@ sleep 3
 sudo dpkg -i *.deb
 sudo rm /etc/nginx/conf.d/brotli.conf
 sudo rm /etc/nginx/nginx.conf
-mv nginx.conf /etc/nginx/nginx.conf
-chown root:root /etc/nginx/nginx.conf
-chmod 644 /etc/nginx/nginx.conf
+
 
 sleep 3
 # Prompt the user for input
@@ -49,6 +47,9 @@ sudo mv html /var/www/html/$replace_string
 sudo chown -R nginx:www-data /var/www/html/$replace_string
 sudo chmod -R 775 /var/www/html/$replace_string
 sudo usermod -a -G www-data  nginx
+mv nginx.conf /etc/nginx/nginx.conf
+chown root:root /etc/nginx/nginx.conf
+chmod 644 /etc/nginx/nginx.conf
 sleep 3
 
 # Generate a secure password for the MariaDB user
