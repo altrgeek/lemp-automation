@@ -41,15 +41,15 @@ else
   echo "File not found: vhost.conf"
 fi
 
-sudo mv vhost.conf /etc/nginx/conf.d/$replace_string
+sudo mv vhost.conf /etc/nginx/conf.d/$replace_string.conf
 sudo mkdir -p /var/www/html/$replace_string
-sudo mv html /var/www/html/$replace_string
+sudo mv html/* /var/www/html/$replace_string
 sudo chown -R nginx:www-data /var/www/html/$replace_string
 sudo chmod -R 775 /var/www/html/$replace_string
-sudo usermod -a -G www-data  nginx
-mv nginx.conf /etc/nginx/nginx.conf
-chown root:root /etc/nginx/nginx.conf
-chmod 644 /etc/nginx/nginx.conf
+sudo usermod -a -G www-data nginx
+sudo mv nginx.conf /etc/nginx/nginx.conf
+sudo chown root:root /etc/nginx/nginx.conf
+sudo chmod 644 /etc/nginx/nginx.conf
 sleep 3
 
 # Generate a secure password for the MariaDB user
